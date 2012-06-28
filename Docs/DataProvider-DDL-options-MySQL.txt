@@ -1,0 +1,110 @@
+Объект $options для DDL функций DataProviders
+
+Формат - Массив
+
+$object = array(
+    'name', // Имя таблицы
+    'type,  // Тип таблицы REGULAR || TEMP
+    'like', // Создать на подобии таблицы (дальше разбор не идет),
+    'sql',  // Создать из запроса (дальше разбор не  идет),
+    'auto_create' = [0 | 1] default 1,
+    'structure' = array(
+        'property' = array(
+            'type' = enum(
+                'BIT',
+                'TINYINT',
+                'SMALLINT',
+                'MEDIUMINT',
+                'INT',
+                'INTEGER',
+                'BIGINT',
+                'REAL',
+                'DOUBLE',
+                'FLOAT',
+                'DECIMAL',
+                'NUMERIC',
+                'DATE',
+                'TIME',
+                'TIMESTAMP',
+                'DATETIME',
+                'YEAR',
+                'CHAR',
+                'VARCHAR',
+                'BINARY',
+                'VARBINARY',
+                'TINYBLOB',
+                'BLOB',
+                'MEDIUMBLOB',
+                'LONGBLOB',
+                'TINYTEXT',
+                'TEXT',
+                'MEDIUMTEXT',
+                'LONGTEXT',
+                'ENUM',
+                'SET'
+            )
+            'size'
+            'values'
+            'default'
+            'options' = set(
+                'NULL',
+                'NOT NULL',
+                'AUTO_INCREMENT',
+                'UNSIGNED',
+                'ZEROFILL'
+            ),
+            'key' = [PRIMARY | UNIQUE],
+            'comment',
+            'column_format' = [FIXED | DYNAMIC | DEFAULT],
+            'storage' = [DISK | MEMORY | DEFAULT]
+        )
+    )
+    'indexes' = array(
+        'PK' = array('fields' => array(), ...),
+        'UK' | 'RK' | 'FK' | 'TK' = array(
+            array('name' => val, 'fields' => array(field, ...), 'options' => array())
+        )
+    ),
+    'options' = array(
+        'engine',
+        'auto_increment',
+        'avg_row_length',
+        'charset',
+        'checksum' = [0 | 1],
+        'collate',
+        'comment',
+        'connection',
+        'data_directory',
+        'delay_key_write' = [0 | 1],
+        'index_directory',
+        'insert_method' = [NO | FIRST | LAST],
+        'key_block_size',
+        'max_rows',
+        'min_rows',
+        'pack_keys' = [0 | 1 | DEFAULT],
+        'password',
+        'row_format' = [DEFAULT | DYNAMIC | FIXED | COMPRESSED | REDUNDANT | COMPACT],
+        'tablespace' = array(
+            'name',
+            'storage' = [DISK | MEMORY | DEFAULT]
+        ),
+        'UNION' = array(
+            'table_name', ...
+        )
+    ),
+
+    // TO-DO
+    'partitions' = array(
+    
+    ),
+    'triggers' = array(
+        'trigger' = array(
+            'name',
+            'type',
+            'code'
+        )
+    )
+)
+
+
+

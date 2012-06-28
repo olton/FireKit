@@ -1,0 +1,22 @@
+$r = new Router(); // create router instance
+
+$r->map('/', array('controller' => 'home')); // main page will call controller "Home" with method "index()"
+$r->map('/login', array('controller' => 'auth', 'action' => 'login'));
+$r->map('/logout', array('controller' => 'auth', 'action' => 'logout'));
+$r->map('/signup', array('controller' => 'auth', 'action' => 'signup'));
+$r->map('/profile/:action', array('controller' => 'profile')); // will call controller "Profile" with dynamic method ":action()"
+$r->map('/users/:id', array('controller' => 'users'), array('id' => '[\d]{1,8}')); // define filters for the url parameters
+
+$r->default_routes();
+$r->execute();
+
+
+$router = new Router();
+// ... some configs ...
+$controller = $router->controller; // will return name as it appears in url, ex: 'user_images'
+$controller = $router->controller_name; // will return processed name of controller
+// for example, if class name in url is 'user_images', then 'controller_name' var will be UserImages
+$router->action;
+$router->id; // if parameter :id presents
+$router->params; // array(...)
+$router->route_matched; // true - if route found, false - if not
